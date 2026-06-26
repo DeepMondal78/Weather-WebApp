@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Glass UI Component Layer */
+.glass-dashboard {
+  background: rgba(25, 25, 25, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 🌧️ POCO style Fluid Rain-Drop Motion Keyframe */
+@keyframes rainDropEffect {
+  0% {
+    transform: translateY(-120px) translateX(0) scaleY(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(110vh) translateX(-30px) scaleY(0.8);
+    opacity: 0;
+  }
+}
+
+/* ☁️ Cinematic Clouds Ambient Floating Keyframe */
+@keyframes cloudFloatEffect {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateX(60px) translateY(-15px) scale(1.05);
+  }
+}
+
+/* ☀️ Sunny Ambient Glow Pulse Keyframe */
+@keyframes sunGlowEffect {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+/* Pure Engine Utilities Binding */
+.animate-rain-drop {
+  animation: rainDropEffect 0.7s linear infinite;
+}
+
+.animate-float {
+  animation: cloudFloatEffect 16s ease-in-out infinite;
+}
+
+.animate-sunglow {
+  animation: sunGlowEffect 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
